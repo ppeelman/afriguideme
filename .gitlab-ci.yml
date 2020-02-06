@@ -1,11 +1,5 @@
 image: docker:latest
 
-before_script:
-  - date # debug
-  - echo `pwd` # debug
-  - echo "$CI_BUILD_NAME, $CI_BUILD_REF_NAME $CI_BUILD_STAGE" # debug
-  - (if [ -z "$CI_COMMIT_TAG" ]; then echo "no tag set"; else echo "tag is set to '$CI_COMMIT_TAG'"; fi) # debug
-
 variables:
   DOCKER_DRIVER: overlay
 
@@ -19,7 +13,6 @@ web:test:
   image: node:13-alpine # specify version of node so that no node-version-related compatibility issues will occur later on
   stage: test
   script:
-    - cd modules/web
     - npm install
     - npm run test
   allow_failure: false
@@ -28,7 +21,6 @@ web:build:
   image: node:13-alpine
   stage: build
   script:
-    - cd modules/web
     - npm install
     - npm run build
   artifacts:
@@ -43,8 +35,6 @@ web:image:
   dependencies:
     - web:build
   script:
-    - cd modules/web
-    - ls -alt
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
     - docker build -t $CI_REGISTRY_IMAGE -f docker/Dockerfile .
     - docker push $CI_REGISTRY_IMAGE
