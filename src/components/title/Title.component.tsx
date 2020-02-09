@@ -1,9 +1,9 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, ReactChild } from "react";
 import HeadingType from '../../enums/HeadingType.enum';
 import { Styled } from './Title.styles';
 
 type TitleProps = {
-  children?: string;
+  children?: ReactChild | string;
   headingType: HeadingType;
 };
 

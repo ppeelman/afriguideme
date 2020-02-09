@@ -1,22 +1,26 @@
 // EXTERNAL
-import React, { FunctionComponent } from 'react';
-import { withRouter } from 'react-router';
+import React, { FunctionComponent } from "react";
+import { withRouter } from "react-router";
+import { FormattedMessage } from "react-intl";
 //
 // INTERNAL
 // Components
-import TravelSearch from '../../components/travelSearch/TravelSearch.component';
-import Title from '../../components/title/Title.component';
+import TravelSearch from "../../components/travelSearch/TravelSearch.component";
+import Title from "../../components/title/Title.component";
 //
 // Enums
-import HeadingType from '../../enums/HeadingType.enum';
+import HeadingType from "../../enums/HeadingType.enum";
 //
 // Styles
-import { Styled } from './TravelSearch.styles';
+import { Styled } from "./TravelSearch.styles";
+import Button from "../../components/button/Button.component";
+import I18nService from "../../services/I18n.service";
+import BtnType from "../../enums/BtnType.enum";
 
 type TravelSearchPageProps = {
-  match: any;
-  location: any;
-  history: any;
+  match: any,
+  location: any,
+  history: any
 };
 
 const TravelSearchPage: FunctionComponent<TravelSearchPageProps> = (
@@ -25,15 +29,19 @@ const TravelSearchPage: FunctionComponent<TravelSearchPageProps> = (
   const { history } = props;
 
   const submitHandler = () => {
-    history.push('/first-night');
+    history.push("/first-night");
   };
 
   return (
     <Styled.FullScreen>
       <Styled.Hero>
         <Styled.Title>
-          <Title headingType={HeadingType.HERO}>Rwanda</Title>
-          <Styled.SubTitle>Land of a thousand hills</Styled.SubTitle>
+          <Title headingType={HeadingType.HERO}>
+            <FormattedMessage id="travelSearch.title" />
+          </Title>
+          <Styled.SubTitle>
+            <FormattedMessage id="travelSearch.subTitle" />
+          </Styled.SubTitle>
         </Styled.Title>
         <Styled.Search>
           <TravelSearch onSubmit={submitHandler} />
