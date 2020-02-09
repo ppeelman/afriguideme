@@ -13,9 +13,6 @@ import HeadingType from "../../enums/HeadingType.enum";
 //
 // Styles
 import { Styled } from "./TravelSearch.styles";
-import Button from "../../components/button/Button.component";
-import I18nService from "../../services/I18n.service";
-import BtnType from "../../enums/BtnType.enum";
 
 type TravelSearchPageProps = {
   match: any,
