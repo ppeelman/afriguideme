@@ -1,23 +1,25 @@
-import colors from './colors.styling';
+import colors from "./color.styling";
 
-type shadow = {
-  offsetX: string;
-  offsetY: string;
-  blurRadius: string;
-  color: string;
+type ShadowMap = {
+  [shadowType: string]: {
+    offsetX: string,
+    offsetY: string,
+    blurRadius: string,
+    color: string
+  }
 };
 
-const shadows: any = {
+const shadows: ShadowMap = {
   SMALL: {
-    offsetX: '1px',
-    offsetY: '1px',
-    blurRadius: '2px',
+    offsetX: "1px",
+    offsetY: "1px",
+    blurRadius: "2px",
     color: colors.BLACK_TRANSPARENT_25PERC
   },
   MEDIUM: {
-    offsetX: '3px',
-    offsetY: '3px',
-    blurRadius: '6px',
+    offsetX: "3px",
+    offsetY: "3px",
+    blurRadius: "6px",
     color: colors.BLACK_TRANSPARENT_25PERC
   }
 };

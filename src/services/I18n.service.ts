@@ -5,7 +5,7 @@ import { BehaviorSubject, Observable } from "rxjs";
 import { i18nConfig } from "../config/i18n.config";
 import { Singleton } from "../utils/Singleton.util";
 import { messages } from "../translations";
-import { LocaleNotSupportedException } from "../exceptions/LocaleNotSupportedException";
+import { LocaleNotSupportedException } from "../errors/LocaleNotSupportedException";
 
 const FALLBACK_LOCALE = 'nl';
 

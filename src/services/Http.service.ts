@@ -4,7 +4,6 @@ import { Observable, of } from "rxjs";
 import { catchError, map } from "rxjs/operators";
 import * as log from 'loglevel';
 
-
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 // ================
