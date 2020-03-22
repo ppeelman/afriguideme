@@ -1,8 +1,8 @@
-import styled from 'styled-components';
-import IconSize from '../../styling/dimensions.styling';
+import styled from "styled-components";
+import { IconSize } from "../../styling/icon.styling";
 
 type RatingProps = {
-  size: IconSize;
+  size: IconSize
 };
 
 const getRightMargin = (size: IconSize) => {
@@ -14,7 +14,10 @@ const getRightMargin = (size: IconSize) => {
   }
 };
 
-const Rating = styled('div')<RatingProps>`
+const Rating =
+  styled("div") <
+  RatingProps >
+  `
   display: flex;
   align-items: center;
 

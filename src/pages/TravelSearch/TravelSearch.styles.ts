@@ -1,8 +1,7 @@
-import styled from 'styled-components';
-import colors from '../../styling/colors.styling';
-import images from '../../utils/images';
-import { hexToRgba } from '../../utils/color.util';
-import { fontSize } from '../../styling/font.styling';
+import styled from "styled-components";
+import colors, { hexToRgba } from "../../styling/color.styling";
+import images from "../../utils/images";
+import { fontSize } from "../../styling/font.styling";
 
 const TravelSearchPage = styled.div``;
 
@@ -22,7 +21,11 @@ const Hero = styled.header`
       ${hexToRgba(colors.WHITE, 0.3)} 85%,
       ${hexToRgba(colors.WHITE, 1)} 100%
     ),
-    linear-gradient(to bottom, ${hexToRgba(colors.BLACK, 0.5)}, ${hexToRgba(colors.BLACK, 0.5)}),
+    linear-gradient(
+      to bottom,
+      ${hexToRgba(colors.BLACK, 0.5)},
+      ${hexToRgba(colors.BLACK, 0.5)}
+    ),
     url(${images.heroRwanda});
 `;
 

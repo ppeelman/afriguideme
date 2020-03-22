@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import colors from '../../styling/colors.styling';
+import colors from '../../styling/color.styling';
 import { fontSize } from '../../styling/font.styling';
 
 const Body = styled.div`

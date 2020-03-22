@@ -14,7 +14,7 @@ import Button from "../../components/button/Button.component";
 //
 import HeadingType from "../../enums/HeadingType.enum";
 import images from "../../utils/images";
-import IconSize from "../../styling/dimensions.styling";
+import { IconSize } from "../../styling/icon.styling";
 import { Styled } from "./HotelDetail.styles";
 
 import BtnType from "../../enums/BtnType.enum";

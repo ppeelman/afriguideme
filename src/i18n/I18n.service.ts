@@ -1,32 +1,23 @@
-// EXTERNAL
-import { BehaviorSubject, Observable } from "rxjs";
-//
-// INTERNAL
-import { i18nConfig } from "../config/i18n.config";
-import { Singleton } from "../utils/Singleton.util";
-import { messages } from "../translations";
-import { LocaleNotSupportedException } from "../errors/LocaleNotSupportedException";
+import * as R from 'ramda';
 
-const FALLBACK_LOCALE = 'nl';
+// INTERNAL
+import { Singleton } from "../utils/Singleton.util";
+import { messages } from "./translations";
+import { LocaleNotSupportedException } from "./i18n.error";
+import store from "../store";
+import { changeLocale } from "./i18n.store";
 
 class I18nService extends Singleton {
-
-  private _$locale: BehaviorSubject<string> = new BehaviorSubject<string>(i18nConfig.locale || FALLBACK_LOCALE);
-
-  public get locale(): Observable<string> {
-    return this._$locale.asObservable();
-  }
-
   public setLocale(locale: string): void {
     if(this._isLocaleSupported(locale)) {
-      this._$locale.next(locale);
+      store.dispatch<any>(changeLocale(locale))
     } else {
       throw new LocaleNotSupportedException(locale);
     }
   }
 
   private _isLocaleSupported(locale: string): boolean {
-    return Object.keys(messages).includes(locale);
+    return R.compose(R.includes(locale), R.keys)(messages)
   }
 
   /**

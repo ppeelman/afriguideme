@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { fontSize } from '../../styling/font.styling';
-import colors from '../../styling/colors.styling';
+import colors from '../../styling/color.styling';
 
 const common = `
   font-family: 'Pacifico', serif;

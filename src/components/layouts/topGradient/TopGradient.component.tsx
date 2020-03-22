@@ -1,22 +1,16 @@
-// EXTERNAL
-import React, { FunctionComponent } from 'react';
-import { withRouter } from 'react-router';
-//
-// INTERNAL
-// Components
-import Stepper from '../../../components/stepper/Stepper.component';
-import Title from '../../../components/title/Title.component';
-//
-// Styles
-import { Styled } from './TopGradient.styles';
-import HeadingType from '../../../enums/HeadingType.enum';
-import BackButton from '../../../components/backButton/BackButton.component';
+import React, { FunctionComponent } from "react";
+import { withRouter } from "react-router";
+
+import Stepper from "../../../components/stepper/Stepper.component";
+import Title from "../../../components/title/Title.component";
+import { Styled } from "./TopGradient.styles";
+import HeadingType from "../../../enums/HeadingType.enum";
+import BackButton from "../../../components/backButton/BackButton.component";
 
 type TopGradientProps = {
   match: any;
   location: any;
   history: any;
-  stepperData: any;
   subTitle: string;
   title: string;
   text: string;
@@ -24,7 +18,7 @@ type TopGradientProps = {
 };
 
 const TopGradient: FunctionComponent<TopGradientProps> = (props: TopGradientProps) => {
-  const { stepperData, subTitle, title, text, children } = props;
+  const { subTitle, title, text, children } = props;
 
   return (
     <Styled.Layout>
@@ -32,7 +26,7 @@ const TopGradient: FunctionComponent<TopGradientProps> = (props: TopGradientProp
       <Styled.Page>
         <Styled.Head>
           <BackButton />
-          <Stepper stepperData={stepperData} />
+          <Stepper />
         </Styled.Head>
         <Styled.Body>
           <Title headingType={HeadingType.H2}>{subTitle}</Title>

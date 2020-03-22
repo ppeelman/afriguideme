@@ -1,12 +1,11 @@
-import React, { FunctionComponent } from 'react';
-import IconType from '../../enums/IconType.enum';
-import { Styled } from './Icon.styles';
-import icons from '../../utils/icons.util';
-import IconSize from '../../styling/dimensions.styling';
+import React, { FunctionComponent } from "react";
+import IconType from "../../enums/IconType.enum";
+import { Styled } from "./Icon.styles";
+import icons, { IconSize } from "../../styling/icon.styling";
 
 type IconProps = {
-  type: IconType;
-  size: IconSize;
+  type: IconType,
+  size: IconSize
 };
 
 const getImageSrcFor = (iconType: IconType): string => {
@@ -22,7 +21,7 @@ const getImageSrcFor = (iconType: IconType): string => {
 
 const Icon: FunctionComponent<IconProps> = (props: IconProps) => {
   const { type, size } = props;
-  return <Styled.Icon size={size} src={getImageSrcFor(type)}/>;
+  return <Styled.Icon size={size} src={getImageSrcFor(type)} />;
 };
 
 export default Icon;

@@ -1,15 +1,15 @@
 // EXTERNAL
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent } from "react";
 
 // INTERNAL
-import Icon from '../icon/Icon.component';
-import { Styled } from './Rating.styles';
-import IconType from '../../enums/IconType.enum';
-import IconSize from '../../styling/dimensions.styling';
+import Icon from "../icon/Icon.component";
+import { Styled } from "./Rating.styles";
+import IconType from "../../enums/IconType.enum";
+import { IconSize } from "../../styling/icon.styling";
 
 type RatingProps = {
-  children: number;
-  size: IconSize;
+  children: number,
+  size: IconSize
 };
 
 const Rating: FunctionComponent<RatingProps> = (props: RatingProps) => {

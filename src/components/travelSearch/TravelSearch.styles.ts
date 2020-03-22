@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import borderRadius from '../../styling/borderRadius.styling';
-import colors from '../../styling/colors.styling';
+import colors from '../../styling/color.styling';
 import getShadow from '../../styling/shadows.styling';
 import { fontSize } from '../../styling/font.styling';
 

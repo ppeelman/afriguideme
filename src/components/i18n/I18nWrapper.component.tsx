@@ -1,21 +1,22 @@
 // EXTERNAL
 import React, { FunctionComponent, ReactChild, ReactChildren } from "react";
 import { IntlProvider } from "react-intl";
+import { connect } from "react-redux";
 //
 // INTERNAL
-import { useObservable } from "../../utils/useObservable.util";
-import I18nService from "../../services/I18n.service";
-import { messages } from "../../translations";
-import { i18nConfig } from "../../config/i18n.config";
+import { messages } from "../../i18n/translations";
+import { i18nConfig } from "../../i18n/i18n.config";
+import { Store } from "../../store";
 
 interface I18nWrapperProps {
-  children: ReactChild | ReactChildren
+  children: ReactChild | ReactChildren;
+  locale: string; // from Redux store
 }
 
-export const I18nWrapper: FunctionComponent<I18nWrapperProps> = (
+const I18nWrapper: FunctionComponent<I18nWrapperProps> = (
   props: I18nWrapperProps
 ) => {
-  const locale: string = useObservable<string>(I18nService.locale);
+  const { locale } = props;
 
   return (
     <IntlProvider
@@ -27,3 +28,13 @@ export const I18nWrapper: FunctionComponent<I18nWrapperProps> = (
     </IntlProvider>
   );
 };
+
+const mapStateToProps = (store: Store) => ({
+  locale: store.locale
+});
+
+const mapDispatchToProps = (dispatch: any) => ({
+  dispatch
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(I18nWrapper);

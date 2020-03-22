@@ -1,7 +1,6 @@
-import styled from 'styled-components';
-import colors from '../../../styling/colors.styling';
-import { hexToRgba } from '../../../utils/color.util';
-import images from '../../../utils/images';
+import styled from "styled-components";
+import colors, { hexToRgba } from "../../../styling/color.styling";
+import images from "../../../utils/images";
 
 const SplitScreen = styled.div`
   height: 100vh;

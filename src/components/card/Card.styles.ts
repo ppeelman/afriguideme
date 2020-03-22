@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
 import borderRadius from '../../styling/borderRadius.styling';
-import colors from '../../styling/colors.styling';
+import colors, { hexToRgba } from '../../styling/color.styling';
 import getShadow from '../../styling/shadows.styling';
-import { hexToRgba } from '../../utils/color.util';
 import { fontSize } from '../../styling/font.styling';
 
 type CardProps = {
@@ -19,13 +18,13 @@ type CardImageProps = {
 
 
 const Card = styled('div')<CardProps>`
-  position: relative; 
+  position: relative;
   border-radius: ${borderRadius.MEDIUM};
   ${({ width, height }: CardProps) => `
     width: ${width}px;
     height: ${height}px;
   `}
-  
+
   background-color: ${colors.WHITE};
   box-shadow: ${getShadow('MEDIUM')};
   overflow: hidden;

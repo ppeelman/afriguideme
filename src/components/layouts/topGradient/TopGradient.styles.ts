@@ -1,7 +1,6 @@
-import styled from 'styled-components';
-import colors from '../../../styling/colors.styling';
-import { hexToRgba } from '../../../utils/color.util';
-import {fontSize} from '../../../styling/font.styling';
+import styled from "styled-components";
+import colors, { hexToRgba } from "../../../styling/color.styling";
+import { fontSize } from "../../../styling/font.styling";
 
 const Layout = styled.div`
   width: 100%;
@@ -44,10 +43,10 @@ const Content = styled.div`
 `;
 
 const Text = styled.div`
-    width: 75%;
-    font-size: ${fontSize.LARGE};
-    color: ${colors.LIGHTEST_GREY};
-    margin-bottom: 5rem;
+  width: 75%;
+  font-size: ${fontSize.LARGE};
+  color: ${colors.LIGHTEST_GREY};
+  margin-bottom: 5rem;
 `;
 
 export const Styled = {
