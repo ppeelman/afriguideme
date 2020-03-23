@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from "react";
 import { withRouter } from "react-router";
 
-import Stepper from "../../../components/stepper/Stepper.component";
-import Title from "../../../components/title/Title.component";
+import Stepper from "../../../stepper/Stepper.component";
+import Title from "../../title/Title.component";
 import { Styled } from "./TopGradient.styles";
 import HeadingType from "../../../enums/HeadingType.enum";
-import BackButton from "../../../components/backButton/BackButton.component";
+import BackButton from "../../backButton/BackButton.component";
 
 type TopGradientProps = {
   match: any;

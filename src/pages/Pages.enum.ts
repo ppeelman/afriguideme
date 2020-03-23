@@ -1,0 +1,5 @@
+export enum Pages {
+  TRAVEL_SEARCH,
+  HOTEL_SELECT,
+  ACITIVITIES_SELECT
+}

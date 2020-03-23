@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 
 // Reducers
-import { I18nReducer } from "./i18n/i18n.store";
+import { I18nReducer } from "./i18n/I18n.store";
 import { CurrentStepReducer } from "./stepper/CurrentStep.store";
 
 export interface Store {

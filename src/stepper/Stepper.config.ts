@@ -20,7 +20,7 @@ export const stepperConfig: StepConfig[] = [
   },
   {
     id: StepId.ACTIVITIES,
-    translation: "stepper.firstNight"
+    translation: "stepper.activities"
   },
   {
     id: StepId.HOTELS,

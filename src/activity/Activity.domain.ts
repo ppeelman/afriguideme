@@ -1,4 +1,4 @@
-import ActivityCategory from '../enums/ActivityCategory.enum';
+import ActivityCategory from './Activity.enum';
 
 class Activity {
   public title: string;

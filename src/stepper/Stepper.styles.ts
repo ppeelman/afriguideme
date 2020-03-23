@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import colors from '../../styling/color.styling';
-import getShadow from '../../styling/shadows.styling';
-import {fontSize} from '../../styling/font.styling';
+import styled from "styled-components";
+import colors from "../styling/color.styling";
+import getShadow from "../styling/shadows.styling";
+import { fontSize } from "../styling/font.styling";
 
 type StepProps = {
   isCompleted: boolean;
@@ -40,8 +40,7 @@ const Step = styled.div`
     margin-right: ${CIRCLE_GAP}rem;
   }
 
-  ${({ isCompleted, isCurrent }: StepProps) =>
-    `color: ${isCompleted || isCurrent ? COLOR_ACTIVE : COLOR_INACTIVE}`};
+  ${({ isCompleted, isCurrent }: StepProps) => `color: ${isCompleted || isCurrent ? COLOR_ACTIVE : COLOR_INACTIVE}`};
 `;
 
 const Step__Circle = styled.div`
@@ -50,18 +49,17 @@ const Step__Circle = styled.div`
   height: ${CIRCLE_DIAMETER}rem;
   width: ${CIRCLE_DIAMETER}rem;
   margin-bottom: 0.5rem;
-  box-shadow: ${getShadow('SMALL')};
+  box-shadow: ${getShadow("SMALL")};
   color: inherit;
   background-color: currentColor;
   z-index: 10;
 `;
 
 const Step__Text = styled.span`
-  ${({ isCompleted, isCurrent }: StepProps) =>
-    `color: ${isCompleted || isCurrent ? COLOR_ACTIVE : COLOR_INACTIVE}`};
+  ${({ isCompleted, isCurrent }: StepProps) => `color: ${isCompleted || isCurrent ? COLOR_ACTIVE : COLOR_INACTIVE}`};
   font-weight: 300;
   color: inherit;
-  font-size: ${fontSize.SMALL}
+  font-size: ${fontSize.SMALL};
 `;
 
 export const Styled = {

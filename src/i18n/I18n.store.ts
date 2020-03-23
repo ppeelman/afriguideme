@@ -1,5 +1,5 @@
 import { StoreAction } from "../store";
-import { i18nConfig } from "./i18n.config";
+import { i18nConfig } from "./I18n.config";
 
 const CHANGE_LOCALE = "CHANGE_LOCALE";
 

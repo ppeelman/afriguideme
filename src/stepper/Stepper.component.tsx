@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from "react";
 
 import { Styled } from "./Stepper.styles";
-import Step from "../../stepper/Step.domain";
+import Step from "./Step.domain";
 import { FormattedMessage } from "react-intl";
-import { Store } from "../../store";
+import { Store } from "../store";
 import { connect } from "react-redux";
-import { buildStepper } from "../../stepper/Stepper.service";
+import { buildStepper } from "./Stepper.service";
 
 type StepperProps = {
   currentStep: number;

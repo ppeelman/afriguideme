@@ -5,8 +5,8 @@ import { FormattedMessage } from "react-intl";
 //
 // INTERNAL
 // Components
-import TravelSearch from "../../components/travelSearch/TravelSearch.component";
-import Title from "../../components/title/Title.component";
+import TravelSearch from "../../ui/travelSearch/TravelSearch.component";
+import Title from "../../ui/title/Title.component";
 //
 // Enums
 import HeadingType from "../../enums/HeadingType.enum";

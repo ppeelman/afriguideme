@@ -4,13 +4,13 @@ import { withRouter } from "react-router";
 //
 // INTERNAL
 // Components
-import SplitScreen from "../../components/layouts/splitScreen/SplitScreen.component";
-import Rating from "../../components/rating/Rating.component";
-import BackButton from "../../components/backButton/BackButton.component";
-import Title from "../../components/title/Title.component";
-import Text from "../../components/text/Text.component";
-import List from "../../components/list/List.component";
-import Button from "../../components/button/Button.component";
+import SplitScreen from "../../ui/layouts/splitScreen/SplitScreen.component";
+import Rating from "../../ui/rating/Rating.component";
+import BackButton from "../../ui/backButton/BackButton.component";
+import Title from "../../ui/title/Title.component";
+import Text from "../../ui/text/Text.component";
+import List from "../../ui/list/List.component";
+import Button from "../../ui/button/Button.component";
 //
 import HeadingType from "../../enums/HeadingType.enum";
 import images from "../../utils/images";

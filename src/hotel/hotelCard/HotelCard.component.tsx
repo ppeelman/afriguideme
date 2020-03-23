@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from "react";
 import { Styled } from "./HotelCard.styles";
 import Hotel from "../../hotel/Hotel.domain";
-import Rating from "../rating/Rating.component";
-import Card from "../card/Card.component";
+import Rating from "../../ui/rating/Rating.component";
+import Card from "../../ui/card/Card.component";
 import { IconSize } from "../../styling/icon.styling";
 
 type HotelCardProps = {

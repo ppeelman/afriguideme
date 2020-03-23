@@ -4,7 +4,7 @@ import { withRouter } from "react-router";
 //
 // INTERNAL
 // Components
-import HotelCard from "../../components/hotelCard/HotelCard.component";
+import HotelCard from "../../hotel/hotelCard/HotelCard.component";
 //
 // Domains
 import Hotel from "../../hotel/Hotel.domain";
@@ -16,7 +16,7 @@ import Hotel from "../../hotel/Hotel.domain";
 import { Styled } from "./HotelSelect.styles";
 
 import images from "../../utils/images";
-import TopGradient from "../../components/layouts/topGradient/TopGradient.component";
+import TopGradient from "../../ui/layouts/topGradient/TopGradient.component";
 import Rating from "../../domain/Rating.domain";
 import { Photo } from "../../domain/Photo.domain";
 import { Either, withDefault } from "ts.data.either";
