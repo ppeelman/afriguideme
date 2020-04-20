@@ -6,7 +6,8 @@ type IconProps = {
 };
 
 const Icon = styled('img')<IconProps>`
-  ${({ size }: IconProps) => `height: ${size}`}
+  ${({ size }: IconProps) => `height: ${size}`};
+  filter: drop-shadow(1px 1px .5px #000000);
 `;
 
 export const Styled = {

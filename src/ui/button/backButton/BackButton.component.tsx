@@ -2,8 +2,8 @@
 import React, { FunctionComponent } from 'react';
 import { withRouter } from 'react-router';
 
-import BtnType from '../../enums/BtnType.enum';
-import Button from '../button/Button.component';
+import BtnType from '../../../enums/BtnType.enum';
+import Button from '../Button.component';
 
 type BackButtonProps = {
   match: any;

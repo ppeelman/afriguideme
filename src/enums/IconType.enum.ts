@@ -1,7 +1,8 @@
 enum IconType {
   STAR = 'STAR',
   PERSON = 'PERSON',
-  CALENDAR = 'CALENDAR'
+  CALENDAR = 'CALENDAR',
+  HEART = 'HEART'
 }
 
 export default IconType;

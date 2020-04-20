@@ -10,10 +10,10 @@ type SplitScreenProps = {
 };
 
 const SplitScreen: FunctionComponent<SplitScreenProps> = (props: SplitScreenProps) => {
-  const { contentLeft, contentRight } = props;
+  const { contentLeft, contentRight, backgroundImage } = props;
 
   return (
-    <Styled.SplitScreen>
+    <Styled.SplitScreen backgroundImage={backgroundImage}>
       <Styled.ContentLeft>{contentLeft}</Styled.ContentLeft>
       <Styled.ContentRight>{contentRight}</Styled.ContentRight>
     </Styled.SplitScreen>

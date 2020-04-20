@@ -10,8 +10,8 @@ type ListProps = {
 const List: FunctionComponent<ListProps> = (props: ListProps) => {
   const { items } = props;
 
-  const itemElements = items.map((item: string) => (
-    <Styled.List__Item>
+  const itemElements = items.map((item: string,  idx: number) => (
+    <Styled.List__Item key={idx}>
       <Styled.List__ItemIcon />
       <Styled.List__ItemText>{item}</Styled.List__ItemText>
     </Styled.List__Item>

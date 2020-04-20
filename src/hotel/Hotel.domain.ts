@@ -1,43 +1,51 @@
 import * as R from "ramda";
-import { Either, left, right } from "ts.data.either";
 
 import { Photo } from "../domain/Photo.domain";
-import Rating from "../domain/Rating.domain";
-import { isInstanceOf, isNullOrUndefined } from "../validation/general.validation";
+import Rating from "../rating/Rating.domain";
 import { InvalidCreationArguments } from "./Hotel.error";
+import { Currency } from "../domain/Currency.domain";
 
 export interface HotelConstructorProps {
   name: string;
+  shortDesc: string;
+  longDesc: string;
   rating: Rating;
   photos: Photo[];
+  startingPrice: Currency;
 }
 
 class Hotel {
   readonly name: string;
+  readonly shortDesc: string;
+  readonly longDesc: string;
   readonly rating: Rating;
   readonly photos: Photo[];
+  readonly startingPrice: Currency;
 
-  private constructor(props: HotelConstructorProps) {
-    this.name = props.name;
-    this.rating = props.rating;
-    this.photos = props.photos;
+  private constructor({ name, shortDesc, longDesc, rating, photos, startingPrice }: HotelConstructorProps) {
+    this.name = name;
+    this.shortDesc = shortDesc;
+    this.longDesc = longDesc;
+    this.rating = rating;
+    this.photos = photos;
+    this.startingPrice = startingPrice;
   }
 
-  public static build(props : HotelConstructorProps): Either<Hotel> {
-    return Hotel.arePropsValid(props) ? right(new Hotel(props)) : left(new InvalidCreationArguments(props));
+  public static build(props: HotelConstructorProps): Hotel {
+    if (Hotel.arePropsValid(props)) {
+      return new Hotel(props);
+    }
+
+    throw new InvalidCreationArguments(props);
   }
 
-  public static arePropsValid = (props : HotelConstructorProps): boolean => {
-    const isNameNotNull: (props: HotelConstructorProps) => boolean = R.compose(R.not, isNullOrUndefined, R.prop('name'));
-    const isRatingInstanceOfRating: (props: HotelConstructorProps) => boolean = R.compose(isInstanceOf(Rating), R.prop('rating'));
-    const arePhotosArrayOfPhotoInstances: (props: HotelConstructorProps) => boolean = R.compose(R.all(isInstanceOf(Photo)) ,R.prop('photos'));
+  public static arePropsValid = (props: HotelConstructorProps): boolean => {
+    const isNameNotNull: (props: HotelConstructorProps) => boolean = R.compose(R.not, R.isNil, R.prop("name"));
 
-    const isValid = R.allPass([isNameNotNull, isRatingInstanceOfRating, arePhotosArrayOfPhotoInstances]);
+    const isValid = R.allPass([isNameNotNull]);
 
     return isValid(props);
-  }
-
-
+  };
 }
 
 export default Hotel;

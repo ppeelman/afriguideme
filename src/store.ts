@@ -1,4 +1,4 @@
-import { createStore, combineReducers, applyMiddleware } from "redux";
+import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 
 // Reducers
@@ -20,6 +20,9 @@ const reducers = combineReducers<Store>({
   currentStep: CurrentStepReducer
 });
 
-const store = createStore(reducers, applyMiddleware(thunk));
+const store = createStore(
+  reducers,
+  applyMiddleware(thunk),
+);
 
 export default store;

@@ -5,15 +5,15 @@ import Stepper from "../../../stepper/Stepper.component";
 import Title from "../../title/Title.component";
 import { Styled } from "./TopGradient.styles";
 import HeadingType from "../../../enums/HeadingType.enum";
-import BackButton from "../../backButton/BackButton.component";
+import BackButton from "../../button/backButton/BackButton.component";
 
 type TopGradientProps = {
   match: any;
   location: any;
   history: any;
-  subTitle: string;
   title: string;
-  text: string;
+  subTitle?: string;
+  text?: string;
   children: any;
 };
 
@@ -29,9 +29,9 @@ const TopGradient: FunctionComponent<TopGradientProps> = (props: TopGradientProp
           <Stepper />
         </Styled.Head>
         <Styled.Body>
-          <Title headingType={HeadingType.H2}>{subTitle}</Title>
+          {subTitle && <Title headingType={HeadingType.H2}>{subTitle}</Title>}
           <Title headingType={HeadingType.H1}>{title}</Title>
-          <Styled.Text>{text}</Styled.Text>
+          {text && <Styled.Text>{text}</Styled.Text>}
           <Styled.Content>{children}</Styled.Content>
         </Styled.Body>
       </Styled.Page>

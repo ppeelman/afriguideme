@@ -2,7 +2,12 @@ import styled from "styled-components";
 import colors, { hexToRgba } from "../../../styling/color.styling";
 import images from "../../../utils/images";
 
+type SplitScreenProps = {
+  backgroundImage: string;
+}
+
 const SplitScreen = styled.div`
+  ${({ backgroundImage }: SplitScreenProps) => `
   height: 100vh;
   width: 100vw;
   background-image: linear-gradient(
@@ -11,13 +16,13 @@ const SplitScreen = styled.div`
       ${hexToRgba(colors.PRIMARY, 0.9)} 45%,
       transparent 45%
     ),
-    url(${images.hotel2});
+    url(${backgroundImage});
 
   background-size: cover;
   background-position: center;
   display: flex;
   align-items: stretch;
-`;
+`}`;
 
 const ContentLeft = styled.div`
   padding: 3rem;

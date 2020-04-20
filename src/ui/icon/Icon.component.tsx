@@ -16,6 +16,8 @@ const getImageSrcFor = (iconType: IconType): string => {
       return icons.person;
     case IconType.CALENDAR:
       return icons.calendar;
+    case IconType.HEART:
+      return icons.heart;
   }
 };
 

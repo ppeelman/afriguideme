@@ -1,7 +1,7 @@
 import { StoreAction } from "../store";
 import { getIdOfFirstItem, stepperConfig } from "./Stepper.config";
 
-const CHANGE_STEP = "CHANGE_LOCALE";
+const CHANGE_STEP = "CHANGE_STEP";
 
 const INITIAL_STATE: number = getIdOfFirstItem(stepperConfig) as number;
 

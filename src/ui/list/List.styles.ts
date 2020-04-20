@@ -3,7 +3,7 @@ import colors from '../../styling/color.styling';
 import { fontSize } from '../../styling/font.styling';
 
 const List = styled.ul`
-  color: ${colors.WHITE};
+  color: ${colors.LIGHTEST_GREY};
   font-size: ${fontSize.MEDIUM};
   margin-left: 0;
 `;

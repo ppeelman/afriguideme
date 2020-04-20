@@ -1,82 +1,48 @@
-// EXTERNAL
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useEffect } from "react";
 import { withRouter } from "react-router";
-//
-// INTERNAL
-// Components
-import HotelCard from "../../hotel/hotelCard/HotelCard.component";
-//
-// Domains
-import Hotel from "../../hotel/Hotel.domain";
-//
-// Enums
-//
-//
-// Styles
-import { Styled } from "./HotelSelect.styles";
 
-import images from "../../utils/images";
+import HotelCard from "../../hotel/hotelCard/HotelCard.component";
+import { Styled } from "./HotelSelect.styles";
 import TopGradient from "../../ui/layouts/topGradient/TopGradient.component";
-import Rating from "../../domain/Rating.domain";
-import { Photo } from "../../domain/Photo.domain";
-import { Either, withDefault } from "ts.data.either";
+import { hotels, text } from "./mockData";
+import { changeStep } from "../../stepper/CurrentStep.store";
+import { StepId } from "../../stepper/Stepper.config";
+import { Store } from "../../store";
+import { connect } from "react-redux";
 
 type HotelSelectPageProps = {
-  match: any,
-  location: any,
-  history: any
+  match: any;
+  location: any;
+  history: any;
+  dispatch: any;
 };
 
-const HotelSelectPage: FunctionComponent<HotelSelectPageProps> = (
-  props: HotelSelectPageProps
-) => {
-  const { history } = props;
+const HotelSelectPage: FunctionComponent<HotelSelectPageProps> = (props: HotelSelectPageProps) => {
+  const { history, dispatch } = props;
 
-  const hotel: Either<Hotel> = Hotel.build({
-    name: "Rubangura",
-    rating: new Rating(3),
-    photos: [
-      new Photo({
-        url: images.hotel,
-        label: "Rubanguray hotel"
-      })
-    ]
+  useEffect(() => {
+    dispatch(changeStep(StepId.FIRST_NIGHT));
   });
 
-  const hotelResult: Hotel | null = withDefault(hotel, null);
-
-  const text =
-    "Jullie starten jullie avontuur in Kigali, de bruisende hoofdstad van het land. Wij stellen drie hotels voor uit eenlopende prijsklasses. Het geselecteerde hotel zal jullie uitvalsbasis zijn gedurende jullie verblijf in Kigali.";
-
-  const clickHandler = () => {
+  const goToHotelDetail = () => {
     history.push("/hotel-detail");
   };
 
-  if (!hotelResult) {
-    return null;
-  }
-
   return (
-    <TopGradient
-      subTitle={"Kigali"}
-      title={"Eerste nacht"}
-      text={text}
-    >
+    <TopGradient subTitle={"Kigali"} title={"Eerste nacht"} text={text}>
       <Styled.Cards>
-        <HotelCard
-          hotel={hotelResult}
-          onClick={clickHandler}
-          selected={false}
-        />
-        <HotelCard
-          hotel={hotelResult}
-          onClick={clickHandler}
-          selected={false}
-        />
-        <HotelCard hotel={hotelResult} onClick={clickHandler} selected={true} />
+        <HotelCard hotel={hotels[0]} onClick={goToHotelDetail} selected={false} />
+        <HotelCard hotel={hotels[1]} onClick={goToHotelDetail} selected={false} />
+        <HotelCard hotel={hotels[2]} onClick={goToHotelDetail} selected={false} />
       </Styled.Cards>
     </TopGradient>
   );
 };
 
-export default withRouter(HotelSelectPage);
+const mapStateToProps = (store: Store) => ({});
+
+const mapDispatchToProps = (dispatch: any) => ({
+  dispatch
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(HotelSelectPage));

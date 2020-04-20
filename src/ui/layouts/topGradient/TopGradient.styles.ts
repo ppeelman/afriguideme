@@ -8,24 +8,25 @@ const Layout = styled.div`
 `;
 
 const Background = styled.div`
-  background-image: linear-gradient(
-    to top right,
-    ${hexToRgba(colors.PRIMARY, 0.75)},
-    ${hexToRgba(colors.PRIMARY, 1)}
-  );
+  background-image: linear-gradient(to top right, ${hexToRgba(colors.PRIMARY, 0.75)}, ${hexToRgba(colors.PRIMARY, 1)});
   width: 100%;
-  height: 100%;
+  height: 80vh;
   z-index: -1;
-  position: absolute;
+  position: fixed;
+  top: 0;
   left: 0;
   bottom: 10vh;
 `;
 
 const Page = styled.div`
-  padding: 3rem;
+  padding: 3rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 `;
 
 const Head = styled.div`
+  padding: 0 3rem;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -34,12 +35,18 @@ const Head = styled.div`
 `;
 
 const Body = styled.div`
-  padding: 2rem 5rem;
+  padding: 2rem 0rem 0rem 5rem;
+  flex: 1 1 auto;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Content = styled.div`
   margin-top: 3rem;
   z-index: 2;
+  flex: 1 1 auto;
+  overflow-y: auto;
 `;
 
 const Text = styled.div`

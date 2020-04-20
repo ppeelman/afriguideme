@@ -1,17 +1,24 @@
 // EXTERNAL
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent } from "react";
 
-import { Styled } from './Text.styling';
+import { Styled } from "./Text.styling";
 
 type TextProps = {
-  fontSize: string;
   children: string;
-}
+  fontSize?: string;
+  bold?: boolean;
+  color?: string;
+  uppercase?: boolean;
+};
 
 const Text: FunctionComponent<TextProps> = (props: TextProps) => {
-  const { children, fontSize } = props;
+  const { children, fontSize, bold, color, uppercase } = props;
 
-  return <Styled.Text fontSize={fontSize}>{children}</Styled.Text>;
+  return (
+    <Styled.Text fontSize={fontSize} color={color} uppercase={uppercase} bold={bold}>
+      {children}
+    </Styled.Text>
+  );
 };
 
 export default Text;

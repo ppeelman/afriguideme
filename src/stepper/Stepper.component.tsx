@@ -16,10 +16,10 @@ const Stepper: FunctionComponent<StepperProps> = (props: StepperProps) => {
   const steps: Step[] = buildStepper(currentStep);
 
   const stepsComponent = steps.map((step: Step) => (
-    <Styled.Step isCurrent={step.isCurrent} isCompleted={step.isCompleted}>
+    <Styled.Step key={step.name} isCurrent={step.isCurrent} isCompleted={step.isCompleted}>
       <Styled.Step__Circle />
       <Styled.Step__Text isCurrent={step.isCurrent} isCompleted={step.isCompleted}>
-        <FormattedMessage id={step.name} />
+        <FormattedMessage  id={step.name} />
       </Styled.Step__Text>
     </Styled.Step>
   ));

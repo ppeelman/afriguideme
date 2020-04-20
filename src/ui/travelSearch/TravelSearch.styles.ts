@@ -29,7 +29,7 @@ const TravelSearchButton = styled.button`
   outline: none;
   position: relative;
   left: 1.5rem;
-  font-size: ${fontSize.LARGE}
+  font-size: ${fontSize.LARGE} !important;
 
   &:active {
     background-image: none;

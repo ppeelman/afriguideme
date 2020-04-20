@@ -52,7 +52,7 @@ const Button = styled('button')<ButtonProps>`
   padding: 1.2rem 3.7rem;
   outline: none;
   transition: all 0.3s;
-  font-size: ${fontSize.LARGE}
+  font-size: ${fontSize.LARGE} !important;
 
   :hover {
     box-shadow: ${getShadow('MEDIUM')};
