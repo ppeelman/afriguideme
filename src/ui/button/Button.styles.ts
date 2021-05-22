@@ -1,13 +1,14 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import borderRadius from '../../styling/borderRadius.styling';
-import colors from '../../styling/color.styling';
-import getShadow from '../../styling/shadows.styling';
-import BtnType from '../../enums/BtnType.enum';
-import {fontSize} from '../../styling/font.styling';
+import borderRadius from "../../styling/borderRadius.styling";
+import colors from "../../styling/color.styling";
+import getShadow from "../../styling/shadows.styling";
+import BtnType from "../../enums/BtnType.enum";
+import { fontSize } from "../../styling/font.styling";
 
 type ButtonProps = {
   btnType: BtnType;
+  borderColor?: string;
 };
 
 const btnTypeStyle = (btnType: BtnType) => {
@@ -45,7 +46,7 @@ const btnTypeStyle = (btnType: BtnType) => {
   }
 };
 
-const Button = styled('button')<ButtonProps>`
+const Button = styled("button")<ButtonProps>`
   cursor: pointer;
   border: none;
   border-radius: ${borderRadius.SMALL};
@@ -55,11 +56,13 @@ const Button = styled('button')<ButtonProps>`
   font-size: ${fontSize.LARGE} !important;
 
   :hover {
-    box-shadow: ${getShadow('MEDIUM')};
+    box-shadow: ${getShadow("MEDIUM")};
     transform: translateY(-1px);
   }
 
   ${({ btnType }: ButtonProps) => btnTypeStyle(btnType)}
+
+  ${({ borderColor }: ButtonProps) => borderColor && `border: .5px solid ${borderColor}`};
 `;
 
 export const Styled = {

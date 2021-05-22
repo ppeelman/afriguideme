@@ -1,7 +1,10 @@
-enum ActivityCategory {
-  NATURE = 'NATURE',
-  CITY = 'CITY',
-  HIKING = 'HIKING'
+export enum ActivityMainType {
+  NATURE = 'Nature',
+  CITY = 'City',
+  HIKING = 'Hiking'
 }
 
-export default ActivityCategory;
+export enum ActivitySubType {
+  SAFARI= 'Safari'
+}
+

@@ -1,32 +1,26 @@
+// EXTERNAL
 import React, { FunctionComponent, ReactChild, ReactChildren } from "react";
 import { IntlProvider } from "react-intl";
-import { connect } from "react-redux";
-
+import { useSelector } from "react-redux";
+//
+// INTERNAL
 import { messages } from "./translations";
 import { i18nConfig } from "./I18n.config";
-import { Store } from "../store";
+import { RootState } from "../store";
 
-interface I18nWrapperProps {
+interface Props {
   children: ReactChild | ReactChildren;
-  locale: string; // from Redux store
 }
 
-const I18nWrapper: FunctionComponent<I18nWrapperProps> = (props: I18nWrapperProps) => {
-  const { locale } = props;
+const I18nWrapper: FunctionComponent<Props> = ({ children }: Props) => {
+  // Redux
+  const locale: string = useSelector(({ locale }: RootState) => locale);
 
   return (
     <IntlProvider locale={locale} messages={messages[locale]} defaultLocale={i18nConfig.defaultLocale}>
-      {props.children}
+      {children}
     </IntlProvider>
   );
 };
 
-const mapStateToProps = (store: Store) => ({
-  locale: store.locale
-});
-
-const mapDispatchToProps = (dispatch: any) => ({
-  dispatch
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(I18nWrapper);
+export default I18nWrapper;

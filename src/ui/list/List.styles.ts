@@ -1,16 +1,29 @@
-import styled from 'styled-components';
-import colors from '../../styling/color.styling';
-import { fontSize } from '../../styling/font.styling';
+import styled from "styled-components";
+import { fontSize } from "../../styling/font.styling";
 
-const List = styled.ul`
-  color: ${colors.LIGHTEST_GREY};
-  font-size: ${fontSize.MEDIUM};
+type ListProps = {
+  color: string;
+  dense: boolean;
+};
+
+const List = styled("ul")<ListProps>`
+  ${({ color, dense }: ListProps) => `
+    color: ${color};
+    font-size: ${dense ? fontSize.XSMALL : fontSize.MEDIUM};
+  `}
+
   margin-left: 0;
 `;
 
+type ListItemProps = {
+  dense: boolean;
+};
+
 const List__Item = styled.li`
+  ${({ dense }: ListItemProps) => `
+    padding: ${dense ? 0.05 : 0.5}rem;
+  `}
   list-style-type: none;
-  padding: 0.5rem;
   display: flex;
   align-items: center;
 `;
@@ -22,7 +35,9 @@ const List__ItemIcon = styled.div`
   margin-right: 1rem;
 `;
 
-const List__ItemText = styled.span``;
+const List__ItemText = styled.span`
+  font-size: inherit;
+`;
 
 export const Styled = {
   List,

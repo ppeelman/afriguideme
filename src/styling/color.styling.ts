@@ -15,7 +15,8 @@ const colors = {
   LIGHT_GREY: "#999999",
   BLACK: "#000000",
   BLACK_TRANSPARENT_25PERC: hexToRgba("#000000", 0.25),
-  RED: 'red'
+  RED: 'red',
+  GOLD: '#FFD700'
 };
 
 export default colors;

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { IconSize } from "../styling/icon.styling";
+import { IconSize } from "../ui/icon/Icon.config";
 
 type RatingProps = {
   size: IconSize

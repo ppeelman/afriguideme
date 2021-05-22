@@ -12,6 +12,7 @@ type StepProps = {
 const CIRCLE_DIAMETER = 4; // in rem
 const CIRCLE_GAP = 6; // in rem
 const COLOR_INACTIVE = colors.PRIMARY_LIGHT;
+const COLOR_INACTIVE_TEXT = colors.PRIMARY_VERY_LIGHT;
 const COLOR_ACTIVE = colors.WHITE;
 
 const Stepper = styled.div`
@@ -56,10 +57,10 @@ const Step__Circle = styled.div`
 `;
 
 const Step__Text = styled.span`
-  ${({ isCompleted, isCurrent }: StepProps) => `color: ${isCompleted || isCurrent ? COLOR_ACTIVE : COLOR_INACTIVE}`};
+  ${({ isCompleted, isCurrent }: StepProps) => `color: ${isCompleted || isCurrent ? COLOR_ACTIVE : COLOR_INACTIVE_TEXT}`};
   font-weight: 300;
-  color: inherit;
   font-size: ${fontSize.SMALL};
+  text-shadow: 0.3px 0.3px 0.3px ${colors.WHITE};
 `;
 
 export const Styled = {

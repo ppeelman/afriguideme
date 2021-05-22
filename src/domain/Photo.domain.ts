@@ -1,4 +1,4 @@
-interface PhotoConstructorProps {
+interface ConstructorArguments {
   url: string;
   previewUrl?: string;
   label?: string;
@@ -9,7 +9,7 @@ export class Photo {
   public previewUrl?: string;
   public label?: string;
 
-  constructor({ url, previewUrl, label }: PhotoConstructorProps) {
+  constructor({ url, previewUrl, label }: ConstructorArguments) {
     this.url = url;
     this.previewUrl = previewUrl;
     this.label = label;

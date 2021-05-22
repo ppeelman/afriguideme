@@ -1,43 +1,22 @@
-import React, { FunctionComponent } from "react";
-
+// EXTERNAL
+import React, { FunctionComponent, useState } from "react";
+//
+// INTERNAL
+import StepComponent from "./Step.component";
 import { Styled } from "./Stepper.styles";
-import Step from "./Step.domain";
-import { FormattedMessage } from "react-intl";
-import { Store } from "../store";
-import { connect } from "react-redux";
-import { buildStepper } from "./Stepper.service";
+import { StepConfig, stepperConfig } from "./Stepper.config";
 
-type StepperProps = {
-  currentStep: number;
-};
-
-const Stepper: FunctionComponent<StepperProps> = (props: StepperProps) => {
-  const { currentStep } = props;
-  const steps: Step[] = buildStepper(currentStep);
-
-  const stepsComponent = steps.map((step: Step) => (
-    <Styled.Step key={step.name} isCurrent={step.isCurrent} isCompleted={step.isCompleted}>
-      <Styled.Step__Circle />
-      <Styled.Step__Text isCurrent={step.isCurrent} isCompleted={step.isCompleted}>
-        <FormattedMessage  id={step.name} />
-      </Styled.Step__Text>
-    </Styled.Step>
-  ));
+const Stepper: FunctionComponent = () => {
+  const [currStepIdx, setCurrStepIdx] = useState<number | null>(null);
 
   return (
     <Styled.Stepper>
-      {stepsComponent}
+      {stepperConfig.map((stepConfig: StepConfig) => (
+        <StepComponent stepConfig={stepConfig} currentStep={currStepIdx} setCurrentStep={setCurrStepIdx} />
+      ))}
       <Styled.Line />
     </Styled.Stepper>
   );
 };
 
-const mapStateToProps = (store: Store) => ({
-  currentStep: store.currentStep
-});
-
-const mapDispatchToProps = (dispatch: any) => ({
-  dispatch
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Stepper);
+export default Stepper;

@@ -1,6 +1,15 @@
 import styled from "styled-components";
 
-const Select = styled.div``;
+const Select = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  & > * {
+    margin-right: 2rem;
+  }
+`;
 
 const Content = styled.div`
   padding-top: 5rem;

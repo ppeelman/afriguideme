@@ -1,65 +1,91 @@
-import { allPass, compose, isNil, not, prop } from "ramda";
-
-import ActivityCategory from "./Activity.enum";
 import { Photo } from "../domain/Photo.domain";
-import { InvalidCreationArguments } from "./Activity.error";
 import { Currency } from "../domain/Currency.domain";
+import ActivityType from "./ActivityType.domain";
+import Location from "../location/Location.domain";
+import { Choice, SelectedOption } from "../domain/Choice.domain";
+import { IActivityBooking } from "../booking/Booking.domain";
+import { ActivityDayPlan } from "./ActivityDayPlan.domain";
+import { Addon, AddonId } from "../domain/Addon.domain";
 
-export interface IProps {
+export interface Features {
+  included: string[];
+  notIncluded: string[];
+}
+
+export interface ConstructorArguments {
   id: string;
   title: string;
   shortDesc: string;
   longDesc: string;
   recommended: boolean;
-  region: string;
+  location: Location;
   hero: Photo;
   photos: Photo[];
-  category: ActivityCategory;
+  type: ActivityType;
   startingPrice: Currency;
+  features: Features;
+  availableChoices: Choice[];
+  addons: Addon[];
 }
 
-class Activity {
-  readonly id: string;
+export class Activity {
+  public id: string;
   readonly title: string;
   readonly shortDesc: string;
   readonly longDesc: string;
   readonly recommended: boolean;
-  readonly region: string;
+  readonly location: Location;
   readonly hero: Photo;
   readonly photos: Photo[];
-  readonly category: ActivityCategory;
+  readonly type: ActivityType;
   readonly startingPrice: Currency;
+  readonly features: Features;
+  readonly choices: Choice[]; // multiple choice, 1 default choice already selected
+  readonly addons: Addon[]; // 'checkbox': true/false, default: not selected
 
-  private constructor({ id, title, shortDesc, longDesc, recommended, region, hero, photos, category, startingPrice }: IProps) {
+  public constructor({
+    id,
+    title,
+    shortDesc,
+    longDesc,
+    recommended,
+    location,
+    hero,
+    photos,
+    type,
+    startingPrice,
+    features,
+    availableChoices,
+    addons
+  }: ConstructorArguments) {
     this.id = id;
     this.title = title;
     this.shortDesc = shortDesc;
     this.longDesc = longDesc;
     this.recommended = recommended;
-    this.region = region;
+    this.location = location;
     this.hero = hero;
     this.photos = photos;
-    this.category = category;
+    this.type = type;
     this.startingPrice = startingPrice;
+    this.features = features;
+    this.choices = availableChoices;
+    this.addons = addons;
   }
-
-  public static build(props: IProps): Activity {
-    if (Activity.arePropsValid(props)) {
-      return new Activity(props);
-    }
-
-    throw new InvalidCreationArguments(props);
-  }
-
-  public static arePropsValid = (props: IProps): boolean => {
-    const isIdNotNull: (props: IProps) => boolean = compose(not, isNil, prop("id"));
-    const isTitleNotNull: (props: IProps) => boolean = compose(not, isNil, prop("title"));
-    const isCategoryNotNull: (props: IProps) => boolean = compose(not, isNil, prop("category"));
-
-    const isValid = allPass([isIdNotNull, isTitleNotNull, isCategoryNotNull]);
-
-    return isValid(props);
-  };
 }
 
-export default Activity;
+export class ActivityBooking implements IActivityBooking {
+  constructor(
+    public id: string,
+
+    public activityId: string,
+    public activityPlanning: ActivityDayPlan[],
+
+    public selectedOptions: SelectedOption<any>[],
+    public addons: AddonId[]
+  ) {}
+
+  public get durationInDays() {
+    return this.activityPlanning.length;
+  }
+}

@@ -21,6 +21,12 @@ const shadows: ShadowMap = {
     offsetY: "3px",
     blurRadius: "6px",
     color: colors.BLACK_TRANSPARENT_25PERC
+  },
+  LARGE: {
+    offsetX: "5px",
+    offsetY: "5px",
+    blurRadius: "10px",
+    color: colors.BLACK_TRANSPARENT_25PERC
   }
 };
 

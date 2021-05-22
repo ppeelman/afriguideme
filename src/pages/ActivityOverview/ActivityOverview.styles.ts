@@ -10,11 +10,12 @@ const BottomBar = styled.div`
   left: 0;
   right: 0;
   background-color: ${colors.WHITE};
-  box-shadow: ${getShadow("MEDIUM")};
+  box-shadow: ${getShadow("LARGE")};
   padding: 2rem;
   z-index: 5;
   display: flex;
   justify-content: flex-end;
+  border-top: 1px solid ${colors.PRIMARY};
 `;
 
 const Content = styled.div`

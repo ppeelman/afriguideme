@@ -17,6 +17,7 @@ const HERO = styled.h1`
 const H1 = styled.h1`
   margin: 0;
   font-size: ${fontSize.H1};
+  text-shadow: 1px 1px 1px ${colors.BLACK};
   ${common}
 `;
 

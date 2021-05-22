@@ -1,10 +1,12 @@
+// EXTERNAL
 import React, { FunctionComponent } from "react";
-
+//
+// INTERNAL
 import { Styled } from "./Card.styles";
 import useWindowDimensions from "../utils/useWindowDimensions.component";
-import IconType from "../enums/IconType.enum";
+import { IconType, IconSize } from "../ui/icon/Icon.config";
 import Icon from "../ui/icon/Icon.component";
-import { IconSize } from "../styling/icon.styling";
+import colors from "../styling/color.styling";
 
 type CardProps = {
   children?: any;
@@ -39,7 +41,7 @@ const Card: FunctionComponent<CardProps> = (props: CardProps) => {
       <Styled.CardImageContainer>
         {recommended && (
           <Styled.Recommended>
-            <Icon type={IconType.HEART} size={IconSize.MEDIUM} />
+            <Icon type={IconType.HEART} size={IconSize.MEDIUM} fillColor={colors.RED} />
             <Styled.RecommendedText>Recommended</Styled.RecommendedText>
           </Styled.Recommended>
         )}

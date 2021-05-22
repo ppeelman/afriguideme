@@ -4,11 +4,12 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import "./App.css";
 import TravelSearchPage from "./pages/TravelSearch/TravelSearch.page";
-import HotelSelectPage from "./pages/HotelSelect/HotelSelect.page";
 import HotelDetailPage from "./pages/HotelDetail/HotelDetail.page";
 import ActivityOverviewPage from "./pages/ActivityOverview/ActivityOverview.page";
 import ActivityDetailPage from "./pages/ActivityDetail/ActivityDetail.page";
 import PersonalDataPage from "./pages/PersonalData/PersonalData.page";
+import ActivityOrderPage from "./pages/ActivityOrder/ActivityOrder.page";
+import FirstNightPage from "./pages/FirstNight/FirstNight.page";
 
 const App: FunctionComponent = () => {
   return (
@@ -18,16 +19,22 @@ const App: FunctionComponent = () => {
           <TravelSearchPage />
         </Route>
         <Route path="/first-night">
-          <HotelSelectPage />
+          <FirstNightPage />
         </Route>
-        <Route path="/hotel-detail">
+        <Route path="/first-night/:id">
           <HotelDetailPage />
         </Route>
-        <Route path="/activity-overview">
+        <Route path="/hotels/:id">
+          <HotelDetailPage />
+        </Route>
+        <Route path="/activities">
           <ActivityOverviewPage />
         </Route>
-        <Route path="/activity-detail">
+        <Route path="/activities/:id">
           <ActivityDetailPage />
+        </Route>
+        <Route path="/activities">
+          <ActivityOrderPage />
         </Route>
         <Route path="/personal-data">
           <PersonalDataPage />

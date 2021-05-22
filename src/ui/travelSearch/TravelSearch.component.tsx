@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { Styled } from './TravelSearch.styles';
 import TravelSearchInput from './travelSearchInput/TravelSearchInput.component';
 import FormInputType from '../../enums/FormInputType.enum';
-import IconType from '../../enums/IconType.enum';
+import { IconType } from '../icon/Icon.config';
 
 type TravelSearchProps = {
   onSubmit: () => any;

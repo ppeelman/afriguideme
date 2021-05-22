@@ -6,5 +6,7 @@
   "stepper.activities": "Activities",
   "stepper.hotels": "Hotels",
   "stepper.personalData": "Personal data",
-  "stepper.overview": "Overview"
+  "stepper.overview": "Overview",
+
+  "option.duration": "Duration"
 }

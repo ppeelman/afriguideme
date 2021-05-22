@@ -1,28 +1,30 @@
-import { createStore, combineReducers, applyMiddleware, compose } from "redux";
-import thunk from "redux-thunk";
-
+// EXTERNAL
+import { applyMiddleware, combineReducers, createStore, Store, StoreEnhancer } from "redux";
+import thunkMiddleware from "redux-thunk";
+import { composeWithDevTools } from "redux-devtools-extension";
+//
+// INTERNAL
 // Reducers
-import { I18nReducer } from "./i18n/I18n.store";
-import { CurrentStepReducer } from "./stepper/CurrentStep.store";
+import i18nReducer from "./i18n/I18n.store";
+import activitiesReducer from "./activity/Activity.store";
+import accommodationsReducer from "./accommodation/Accommodation.store";
+import bookingsReducer from "./booking/Booking.store";
 
-export interface Store {
-  locale: string;
-  currentStep: number;
-}
-
-export interface StoreAction<T> {
-  type: string;
-  payload: T;
-}
-
-const reducers = combineReducers<Store>({
-  locale: I18nReducer,
-  currentStep: CurrentStepReducer
+const rootReducer = combineReducers({
+  locale: i18nReducer,
+  activities: activitiesReducer,
+  accommodations: accommodationsReducer,
+  bookings: bookingsReducer
 });
 
-const store = createStore(
-  reducers,
-  applyMiddleware(thunk),
-);
+export type RootState = ReturnType<typeof rootReducer>; // https://redux.js.org/recipes/usage-with-typescript
+
+// Important to use the Redux devtools extension!
+// https://redux.js.org/recipes/configuring-your-store#integrating-the-devtools-extension
+
+const middlewareEnhancer: StoreEnhancer = applyMiddleware(thunkMiddleware);
+const composedEnhancers: StoreEnhancer = composeWithDevTools(middlewareEnhancer);
+
+const store: Store = createStore(rootReducer, composedEnhancers);
 
 export default store;

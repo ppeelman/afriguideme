@@ -2,6 +2,7 @@ import React, { ChangeEvent } from "react";
 
 import { Styled } from "./SortControl.styles";
 import { Sorter } from "./CardsWithFilter.component";
+import Select, { Option } from "../../ui/form/select/Select.component";
 
 type SortControlProps<T> = {
   sorters: Sorter<T>[];
@@ -29,21 +30,18 @@ function SortControl<T>(props: SortControlProps<T>) {
     sorterSelected && sort(sorterSelected.sortFunction);
   };
 
+  let options: Option[] = sorters.map(({ sorterLabel }: Sorter<T>) => ({
+    label: sorterLabel,
+    value: sorterLabel
+  }));
+
+  options = [{ label: "-- Sort on --", value: DEFAULT_VALUE }, ...options];
+
   return (
     <Styled.Container>
       <Styled.NumberOfResults>{numberOfItems} resultaten</Styled.NumberOfResults>
       <div>
-        <Styled.SortLabel>Sorteer op</Styled.SortLabel>
-        <select name="sort" onChange={selectHandler}>
-          <option key={DEFAULT_VALUE} value={DEFAULT_VALUE}>
-            --No filter--
-          </option>
-          {sorters.map((sorter: Sorter<T>, idx: number) => (
-            <option key={idx} value={sorter.sorterLabel}>
-              {sorter.sorterLabel}
-            </option>
-          ))}
-        </select>
+        <Select id={"sort"} name={"sort"} onChange={selectHandler} options={options} />
       </div>
     </Styled.Container>
   );
